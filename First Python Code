@@ -1,0 +1,49 @@
+This was my first ever project in coding using python. This is a "complete calculator with the ability of performing 6 different operations.
+
+
+'''
+Names: Christopher Castillo (Christopher.Castillo1@marist.edu), Andrew Lombardo, Nicholas Muratore
+Date: 09/25/2023
+Title: Project#01 (Complete Calculator)
+'''
+print('\t*******************\n\tComplete Calculator\n\t*******************')
+#Asking user for inputs
+try:
+    n1=eval(input("Please provide your first number: "))
+    n2=eval(input("Please provide your second number: "))
+except (NameError, SyntaxError):
+    print("You did not enter a numeric input")
+command=input("Please provide your mathematical operation.(+,-,*,/,power,squared root): ")
+#Importing Math
+import math
+#Checking the validity of the input operands
+try:
+    if ((isinstance(n1, int) or isinstance(n1, float) or isinstance(n1, complex)) and (isinstance(n2, int) or isinstance(n2, float) or isinstance(n2, complex))):
+        print()
+#Checking the validity of the input operators
+#Each (try) is meant to determine the vaidity of the requested arithmetic operation 
+        match command:
+            case'+':
+                print(f'The result of the summation of {n1} and {n2} equals {n1+n2}')
+            case'-':
+                print(f'The result of the subtraction of {n1} and {n2} equals {n1-n2}')
+            case'*':
+                print(f'The result of the multiplication of {n1} and {n2} equals {n1*n2}')
+            case'/':
+                try:
+                    print(f'The result of the divition of {n1} and {n2} equals {n1/n2}')
+                except ArithmeticError:
+                    print("You entered an invalid Arithmetic Operation")
+            case'power':
+                print(f'The result of {n1} to the power of {n2} equals {n1**n2}')
+            case'squared root':
+                try:
+                    print(f'The squared root of {n1} is equal to {math.sqrt(n1)} and the squared root of {n2} is equal to {math.sqrt(n2)}')
+                except ValueError:
+                    print("You entered an invalid Arithmetic Operation")
+            case _:
+                print("You entered an invalid operator")
+    else:
+        print("Your input was an invalid operand")
+except NameError:
+    print("You did not enter a valid numeric value for this operation")
